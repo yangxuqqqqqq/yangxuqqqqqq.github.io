@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Quick Start1.react路由传参    xxx this.props.history.push({pathname:&quot;&#x2F;path&#x2F;&quot; + name}); 读取参数用:this.props.match.params.name  优势 ： 刷新地址栏，参数依然存在 缺点:只能传字符串，并且，如果传的值太多的话，url会变得长而丑陋。 2.query     this.props.histo">
+<meta property="og:type" content="article">
 <meta property="og:title" content="我将总结react在这里">
 <meta property="og:url" content="http://yoursite.com/2020/03/17/react%E5%BD%92%E7%BA%B3/index.html">
 <meta property="og:site_name" content="杨旭的个人博客">
+<meta property="og:description" content="Quick Start1.react路由传参    xxx this.props.history.push({pathname:&quot;&#x2F;path&#x2F;&quot; + name}); 读取参数用:this.props.match.params.name  优势 ： 刷新地址栏，参数依然存在 缺点:只能传字符串，并且，如果传的值太多的话，url会变得长而丑陋。 2.query     this.props.histo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-17T11:38:27.070Z">
-<meta property="article:modified_time" content="2020-03-17T11:38:52.275Z">
+<meta property="article:modified_time" content="2020-03-18T10:08:31.482Z">
 <meta property="article:author" content="Yang xu">
 <meta name="twitter:card" content="summary">
 
@@ -121,6 +123,26 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-books"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-fw fa-movies"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games" rel="section"><i class="fa fa-fw fa-games"></i>游戏</a>
+
+  </li>
   </ul>
 
 </nav>
@@ -169,10 +191,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-17 19:38:27 / 修改时间：19:38:52" itemprop="dateCreated datePublished" datetime="2020-03-17T19:38:27+08:00">2020-03-17</time>
+              <time title="创建时间：2020-03-17 19:38:27" itemprop="dateCreated datePublished" datetime="2020-03-17T19:38:27+08:00">2020-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 18:08:31" itemprop="dateModified" datetime="2020-03-18T18:08:31+08:00">2020-03-18</time>
+              </span>
 
           
 
@@ -185,7 +213,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1-react路由传参"><a href="#1-react路由传参" class="headerlink" title="1.react路由传参"></a>1.react路由传参</h3><Route path='/path/:name' component={Path}/>
+
+
+
+<link to="/path/2">xxx</Link> this.props.history.push({pathname:"/path/" + name});
+读取参数用:this.props.match.params.name
+
+<p>优势 ： 刷新地址栏，参数依然存在<br> 缺点:只能传字符串，并且，如果传的值太多的话，url会变得长而丑陋。</p>
+<h3 id="2-query"><a href="#2-query" class="headerlink" title="2.query"></a>2.query</h3><Route path='/query' component={Query}/>
+
+
+
+<Link to=pw_ path : ' /query' , query : { name : 'sunny' }> this.props.history.push({pathname:"/query",query: { name : 'sunny' }}); 读取参数用: this.props.location.query.name
+
+<p>优势：传参优雅，传递参数可传对象；<br> 缺点：刷新地址栏，参数丢失</p>
+<h3 id="3-state"><a href="#3-state" class="headerlink" title="3.state"></a>3.state</h3><Route path='/sort ' component={Sort}/>
+
+
+
+<Link to=pw_ path : ' /sort ' , state : { name : 'sunny' }> this.props.history.push({pathname:"/sort ",state : { name : 'sunny' }}); 读取参数用: this.props.location.query.state
+
+<p>优缺点同query</p>
+<h3 id="4-search"><a href="#4-search" class="headerlink" title="4.search"></a>4.search</h3><Route path='/web/departManange ' component={DepartManange}/>
+
+
+
+<link to="web/departManange?tenantId=12121212">xxx</Link> this.props.history.push({pathname:"/web/departManange?tenantId" + row.tenantId});
+读取参数用: this.props.location.search
+
+<p>转自：<a href="https://www.jianshu.com/p/ad8cc02b9e6c" target="_blank" rel="noopener">https://www.jianshu.com/p/ad8cc02b9e6c</a></p>
+<h3 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h3>
     </div>
 
     
@@ -200,10 +258,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/17/%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" rel="prev" title="你好啊">
-      <i class="fa fa-chevron-left"></i> 你好啊
+    <a href="/2020/03/17/%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" rel="prev" title="状态">
+      <i class="fa fa-chevron-left"></i> 状态
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/18/webpack/" rel="next" title="如何解决webpack内存溢出问题">
+      如何解决webpack内存溢出问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -263,6 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-react路由传参"><span class="nav-number">1.1.</span> <span class="nav-text">1.react路由传参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-query"><span class="nav-number">1.2.</span> <span class="nav-text">2.query</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-state"><span class="nav-number">1.3.</span> <span class="nav-text">3.state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-search"><span class="nav-number">1.4.</span> <span class="nav-text">4.search</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二"><span class="nav-number">1.5.</span> <span class="nav-text">第二</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -278,7 +340,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

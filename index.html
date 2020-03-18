@@ -119,6 +119,26 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-books"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-fw fa-movies"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games" rel="section"><i class="fa fa-fw fa-games"></i>游戏</a>
+
+  </li>
   </ul>
 
 </nav>
@@ -421,7 +441,7 @@
 
             
                 <a class="item active" href="/" target="_blank" style="height: 100%;">
-                    <img src="https://b267.photo.store.qq.com/psb?/V12XNJjX4On6Wv/*C5STM4NpSQc4PLB3o0APhin8LJqoTZUH749QOUxh58!/b/dAsBAAAAAAAA&bo=oAU4BAAAAAARB6k!&rf=viewer_4"   style="width: 100%; height: auto" >
+                    <img src=""   style="width: 100%; height: auto" >
                 </a>
                 
                 
@@ -430,7 +450,7 @@
 
             
                     <a class="item" href="/" target="_blank" style="height: 100%;">
-                        <img src="https://b389.photo.store.qq.com/psb?/V12XNJjX4On6Wv/5jl5rdeSvbMfQQZ1*8roC2GXjQph5puBmWG3*rjmRUs!/b/dIUBAAAAAAAA&bo=oAWABwAAAAARBxI!&rf=viewer_4"  style="width: 100%; height: auto;" >
+                        <img src=""  style="width: 100%; height: auto;" >
                     </a>
             
 
@@ -453,6 +473,65 @@
 
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/18/webpack/" class="post-title-link" itemprop="url">如何解决webpack内存溢出问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-18 17:52:41 / 修改时间：17:53:09" itemprop="dateCreated datePublished" datetime="2020-03-18T17:52:41+08:00">2020-03-18</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1.由于项目很大，今天打包出现了<br>FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed- process out of memory<br>这种错误，上网查了下说是内存溢出问题，<br>也就是说你的硬件内存有点小，反正不够你打包用，怎么办？<br>接下来修改下面几个地方就可以了<br>node_modules下的bin文件，找到cross-env.cmd还有webpack.cmd文件，在</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -480,10 +559,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-17 19:38:27 / 修改时间：19:38:52" itemprop="dateCreated datePublished" datetime="2020-03-17T19:38:27+08:00">2020-03-17</time>
+              <time title="创建时间：2020-03-17 19:38:27" itemprop="dateCreated datePublished" datetime="2020-03-17T19:38:27+08:00">2020-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 18:08:31" itemprop="dateModified" datetime="2020-03-18T18:08:31+08:00">2020-03-18</time>
+              </span>
 
           
 
@@ -496,7 +581,37 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1-react路由传参"><a href="#1-react路由传参" class="headerlink" title="1.react路由传参"></a>1.react路由传参</h3><Route path='/path/:name' component={Path}/>
+
+
+
+<link to="/path/2">xxx</Link> this.props.history.push({pathname:"/path/" + name});
+读取参数用:this.props.match.params.name
+
+<p>优势 ： 刷新地址栏，参数依然存在<br> 缺点:只能传字符串，并且，如果传的值太多的话，url会变得长而丑陋。</p>
+<h3 id="2-query"><a href="#2-query" class="headerlink" title="2.query"></a>2.query</h3><Route path='/query' component={Query}/>
+
+
+
+<Link to=pw_ path : ' /query' , query : { name : 'sunny' }> this.props.history.push({pathname:"/query",query: { name : 'sunny' }}); 读取参数用: this.props.location.query.name
+
+<p>优势：传参优雅，传递参数可传对象；<br> 缺点：刷新地址栏，参数丢失</p>
+<h3 id="3-state"><a href="#3-state" class="headerlink" title="3.state"></a>3.state</h3><Route path='/sort ' component={Sort}/>
+
+
+
+<Link to=pw_ path : ' /sort ' , state : { name : 'sunny' }> this.props.history.push({pathname:"/sort ",state : { name : 'sunny' }}); 读取参数用: this.props.location.query.state
+
+<p>优缺点同query</p>
+<h3 id="4-search"><a href="#4-search" class="headerlink" title="4.search"></a>4.search</h3><Route path='/web/departManange ' component={DepartManange}/>
+
+
+
+<link to="web/departManange?tenantId=12121212">xxx</Link> this.props.history.push({pathname:"/web/departManange?tenantId" + row.tenantId});
+读取参数用: this.props.location.search
+
+<p>转自：<a href="https://www.jianshu.com/p/ad8cc02b9e6c" target="_blank" rel="noopener">https://www.jianshu.com/p/ad8cc02b9e6c</a></p>
+<h3 id="第二"><a href="#第二" class="headerlink" title="第二"></a>第二</h3>
       
     </div>
 
@@ -529,7 +644,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/17/%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">你好啊</a>
+            <a href="/2020/03/17/%E9%80%99%E6%98%AF%E6%88%91%E7%9A%84%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">状态</a>
         </h1>
 
         <div class="post-meta">
@@ -538,10 +653,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-17 18:03:22 / 修改时间：18:03:35" itemprop="dateCreated datePublished" datetime="2020-03-17T18:03:22+08:00">2020-03-17</time>
+              <time title="创建时间：2020-03-17 18:03:22" itemprop="dateCreated datePublished" datetime="2020-03-17T18:03:22+08:00">2020-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 17:57:38" itemprop="dateModified" datetime="2020-03-18T17:57:38+08:00">2020-03-18</time>
+              </span>
 
           
 
@@ -554,7 +675,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>状  态<br>1、工作原理<br>大部分情况下，实际开发过程中，我们会考虑使用一些管理状态的外部库，如Redux 和 Mobx。导致许多新手上来就去学习使用管理状态的外部库，以致于很多情况下，我们从未真正了解过如何正确使用 React 状态。<br>在 React 组件的生命周期中，可以使用生命周期中的方法或者时间处理器中的setState多次修改状态。当状态发生变化时，React 就会重新渲染组件视图。<br>举例来说：<br>this.state = { name:”Tom” };<br>//然后用setState<br>this.setState = { age:18 };<br>//最终的state<br>{ name:”Tome”, age: 18 }<br>所以当state状态改变时，React会自动执行再次渲染的方法，从而影响UI视图的改变。<br>在一些情况下，需要在更改状态完成之后执行相关操作，这个时候setState的第二个参数，就派上用场了。React为此提供一个回调函数：<br>this.setState({<br>        age:20,<br>},()=&gt;{<br>        console.log(“My age is:”,this.state.age);<br>});<br>2、异 步<br>在 React 官方文档中，应该总是总是将setState方法当成异步操作的。举个例子来说：<br>//点击事件函数<br>handleClickBtn = () =&gt;{<br>        this.setState({<br>            age:18,<br>        });<br>        console.log(“state is now:”,this.state); //state is now:null<br>}<br>render(){<br>    return <button onClick = {this.handleClickButn} >点击</button><br>}<br>此时，控制台上将输出：state is now：null<br>出现这种情况是，React 知道如何优化事件处理器内部的状态更新，同时进行批处理，以获得更好的性能。<br>如果对代码稍加修改：<br>//点击事件函数<br>handleClickBtn = () =&gt;{<br>        //增加延迟<br>            setTimeout(()=&gt;{<br>            this.setState({<br>                    age:18,<br>            });<br>      });</p>
+<pre><code>console.log(&quot;state is now:&quot;,this.state); //state is now:object {age:18}</code></pre><p>}<br>render(){<br>    return <button onClick = {this.handleClickButn} >点击</button><br>}<br>此时控制台上将输出： state is now：object { age：18}<br>出现这种情况是：React 不知道如何优化执行过程，只能尝试尽快改变状态。<br>这里使用 setTimeout 只为演示 React 执行行为，尽量避免这样编写事件处理器。</p>
+
       
     </div>
 
@@ -596,10 +719,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-17 16:11:51 / 修改时间：18:02:34" itemprop="dateCreated datePublished" datetime="2020-03-17T16:11:51+08:00">2020-03-17</time>
+              <time title="创建时间：2020-03-17 16:11:51" itemprop="dateCreated datePublished" datetime="2020-03-17T16:11:51+08:00">2020-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-18 09:12:34" itemprop="dateModified" datetime="2020-03-18T09:12:34+08:00">2020-03-18</time>
+              </span>
 
           
 
@@ -612,7 +741,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <p>How to use <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -709,7 +838,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
