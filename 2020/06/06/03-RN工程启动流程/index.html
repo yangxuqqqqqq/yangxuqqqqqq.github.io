@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、React Native工程结构分析1) 初始化RN工程1react-native init LKDemo2   2) 工程目录结构图 3）工程启动流程分析 iOS工程或安卓工程一启动，就会加载目录中index.js文件，通过AppRegistry去注册组件，并且把注册完成的组件输出给iOS端或Android端：  1234567891011&#x2F;&#x2F; 引入注册组件模块impor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="03-RN工程启动流程">
+<meta property="og:url" content="http://yoursite.com/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="杨旭的个人博客">
+<meta property="og:description" content="一、React Native工程结构分析1) 初始化RN工程1react-native init LKDemo2   2) 工程目录结构图 3）工程启动流程分析 iOS工程或安卓工程一启动，就会加载目录中index.js文件，通过AppRegistry去注册组件，并且把注册完成的组件输出给iOS端或Android端：  1234567891011&#x2F;&#x2F; 引入注册组件模块impor">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img16.png">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img17.png">
+<meta property="article:published_time" content="2020-06-06T03:53:27.129Z">
+<meta property="article:modified_time" content="2019-11-26T12:44:44.000Z">
+<meta property="article:author" content="Yang xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img16.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>03-RN工程启动流程 | 杨旭的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨旭的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">天气这么好，欢迎光临阁下小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-books"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-fw fa-movies"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games" rel="section"><i class="fa fa-fw fa-games"></i>游戏</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          03-RN工程启动流程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-26 20:44:44" itemprop="dateModified" datetime="2019-11-26T20:44:44+08:00">2019-11-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、React-Native工程结构分析"><a href="#一、React-Native工程结构分析" class="headerlink" title="一、React Native工程结构分析"></a>一、React Native工程结构分析</h4><h6 id="1-初始化RN工程"><a href="#1-初始化RN工程" class="headerlink" title="1) 初始化RN工程"></a>1) 初始化RN工程</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init LKDemo2</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2-工程目录结构图"><a href="#2-工程目录结构图" class="headerlink" title="2) 工程目录结构图"></a>2) 工程目录结构图</h6><p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img16.png" alt="工程目录结构图"></p>
+<h6 id="3）工程启动流程分析"><a href="#3）工程启动流程分析" class="headerlink" title="3）工程启动流程分析"></a>3）工程启动流程分析</h6><ul>
+<li>iOS工程或安卓工程一启动，就会加载目录中<code>index.js</code>文件，通过<code>AppRegistry</code>去注册组件，并且把注册完成的组件输出给iOS端或Android端：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入注册组件模块</span><br><span class="line">import &#123;AppRegistry&#125; from &#39;react-native&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入组件汇总模块</span><br><span class="line">import App from &#39;.&#x2F;App&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入输出组件名称</span><br><span class="line">import &#123;name as appName&#125; from &#39;.&#x2F;app.json&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 注册组件，程序主入口</span><br><span class="line">&#x2F;&#x2F; appName: 注册模块名称</span><br><span class="line">&#x2F;&#x2F; () &#x3D;&gt; App: 组件类，程序启动会自动加载该类实例化的组件对象</span><br><span class="line">AppRegistry.registerComponent(appName, () &#x3D;&gt; App);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过Xcode打开iOS工程，或者Android Studio打开Android工程，此处以iOS端为例子。找到AppDelegate.m文件，查看客户端加载方法：</li>
+</ul>
+<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img17.png" alt="AppDelegate.m"></p>
+<ul>
+<li><p>代理文件中通过该方法加载JS端输出的模块，注意模块的名称两端必须保持一致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initWithBridge:bridge moduleName:@&quot;MyRNDemo&quot; initialProperties:nil</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代理文件解析加载注释如下</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F; 1. 获取桥接文件</span><br><span class="line">  RCTBridge *bridge &#x3D; [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];</span><br><span class="line">  &#x2F;&#x2F; 2. 根据模块加载根视图</span><br><span class="line">  RCTRootView *rootView &#x3D; [[RCTRootView alloc] initWithBridge:bridge</span><br><span class="line">                                                   moduleName:@&quot;MyRNDemo&quot;</span><br><span class="line">                                            initialProperties:nil];</span><br><span class="line"></span><br><span class="line">  rootView.backgroundColor &#x3D; [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 3. 设置窗口</span><br><span class="line">  self.window &#x3D; [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 4. 设置窗口根控制器的view</span><br><span class="line">  UIViewController *rootViewController &#x3D; [UIViewController new];</span><br><span class="line">  rootViewController.view &#x3D; rootView;</span><br><span class="line">  self.window.rootViewController &#x3D; rootViewController;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 5. 显示窗口</span><br><span class="line">  [self.window makeKeyAndVisible];</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="4）App-js文件运行步骤"><a href="#4）App-js文件运行步骤" class="headerlink" title="4）App.js文件运行步骤"></a>4）App.js文件运行步骤</h6><ul>
+<li>加载React模块，使用其内部的API，比如：jsx语法；</li>
+<li>加载React Native原生组件，比如：<code>SafeAreaView, StyleSheet, View, Text,Image</code>等；</li>
+<li>自定义组件类，作为模块的输出；</li>
+<li>创建样式对象，传入样式对象，根据样式中的对象描述，创建样式表</li>
+<li>导出当前模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 撩课学院</span><br><span class="line"> * https:&#x2F;&#x2F;itlike.com</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1. 加载React模块</span><br><span class="line">import React from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 加载原生组件</span><br><span class="line">import &#123;</span><br><span class="line">  SafeAreaView,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  StatusBar,</span><br><span class="line">  Image</span><br><span class="line">&#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 自定义组件（程序入口组件）</span><br><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;StatusBar barStyle&#x3D;&quot;dark-content&quot; &#x2F;&gt;</span><br><span class="line">      &lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt;</span><br><span class="line">         &lt;View style&#x3D;&#123;styles.viewStyle&#125;&gt;</span><br><span class="line">           &lt;Image</span><br><span class="line">               style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">               source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">           &#x2F;&gt;</span><br><span class="line">           &lt;Text style&#x3D;&#123;styles.textStyle&#125;&gt;小撩陪你开启RN学习之旅！&lt;&#x2F;Text&gt;</span><br><span class="line">         &lt;&#x2F;View&gt;</span><br><span class="line">      &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 创建样式对象</span><br><span class="line">&#x2F;&#x2F; 传入样式对象，根据样式中的对象描述，创建样式表</span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  safeView: &#123;</span><br><span class="line">    flex: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  textStyle: &#123;</span><br><span class="line">    fontSize: 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 5. 导出当前模块</span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="二、React-Native语法分析"><a href="#二、React-Native语法分析" class="headerlink" title="二、React Native语法分析"></a>二、React Native语法分析</h4><h6 id="1）JSX语法"><a href="#1）JSX语法" class="headerlink" title="1）JSX语法"></a>1）JSX语法</h6><p>JSX语法是一个比较高级但很直观的JS语法糖。我们在创建View的结构是，可以用类似HTML标签的形式创建，当然最终在编译是还是会转换成JS代码。</p>
+<ul>
+<li>函数中只要返回组件，都需要用()包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">      &lt;View&gt;&lt;&#x2F;View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>函数中除字符串以外，赋值时都需要用{}包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt; &lt;&#x2F;SafeAreaView&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Image style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125; source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">          &#x2F;&gt;</span><br></pre></td></tr></table></figure></li>
+<li>组件内使用变量时，都需要用大括号包裹，否则会被当成普通字符串处理。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str &#x3D; &#39;引擎计划&#39;;</span><br><span class="line">&lt;Text&gt;&#123;str&#125;&lt;&#x2F;Text&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="2）样式对象文件"><a href="#2）样式对象文件" class="headerlink" title="2）样式对象文件"></a>2）样式对象文件</h6>内部以键值对的形式，取值如同JS中的对象调用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/06/02-RN%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="02-RN环境配置">
+      <i class="fa fa-chevron-left"></i> 02-RN环境配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/06/05-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8A/" rel="next" title="05-RN常用的组件-上">
+      05-RN常用的组件-上 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80OTE3Ny8yNTY3MQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、React-Native工程结构分析"><span class="nav-number">1.</span> <span class="nav-text">一、React Native工程结构分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-初始化RN工程"><span class="nav-number">1.0.1.</span> <span class="nav-text">1) 初始化RN工程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-工程目录结构图"><span class="nav-number">1.0.2.</span> <span class="nav-text">2) 工程目录结构图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3）工程启动流程分析"><span class="nav-number">1.0.3.</span> <span class="nav-text">3）工程启动流程分析</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4）App-js文件运行步骤"><span class="nav-number">1.0.4.</span> <span class="nav-text">4）App.js文件运行步骤</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、React-Native语法分析"><span class="nav-number">2.</span> <span class="nav-text">二、React Native语法分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）JSX语法"><span class="nav-number">2.0.1.</span> <span class="nav-text">1）JSX语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）样式对象文件"><span class="nav-number">2.0.2.</span> <span class="nav-text">2）样式对象文件</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yang xu"
+      src="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+  <p class="site-author-name" itemprop="name">Yang xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yangxuqqqqqq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yangxuqqqqqq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:6077334@qq.com" title="E-Mail → mailto:6077334@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Kimchiye" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Kimchiye" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang xu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

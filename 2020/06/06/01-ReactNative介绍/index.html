@@ -20,19 +20,22 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.由于项目很大，今天打包出现了FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed- process out of memory这种错误，上网查了下说是内存溢出问题，也就是说你的硬件内存有点小，反正不够你打包用，怎么办？接下来修改下面几个地方就可以了node_modules下的bin文件，找到cross-env.cmd还有webpack.cmd文件">
+  <meta name="description" content="Facebook于2015年9月15日发布React Native，发展成长至今，它成为原生手机端App必不可少的开发模式之一。目前比较成熟的跨平台方案: 1231）React Native,  Vue+Weex2）AppCan3）Flutter React Native已经完成了对多端的支持，实现了真正意义上的面向配置开发: 开发人员可以只使用JavaScript也能编写原生移动，结合Reac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何解决webpack内存溢出问题">
-<meta property="og:url" content="http://yoursite.com/2020/03/18/webpack/index.html">
+<meta property="og:title" content="01-ReactNative介绍">
+<meta property="og:url" content="http://yoursite.com/2020/06/06/01-ReactNative%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="杨旭的个人博客">
-<meta property="og:description" content="1.由于项目很大，今天打包出现了FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed- process out of memory这种错误，上网查了下说是内存溢出问题，也就是说你的硬件内存有点小，反正不够你打包用，怎么办？接下来修改下面几个地方就可以了node_modules下的bin文件，找到cross-env.cmd还有webpack.cmd文件">
+<meta property="og:description" content="Facebook于2015年9月15日发布React Native，发展成长至今，它成为原生手机端App必不可少的开发模式之一。目前比较成熟的跨平台方案: 1231）React Native,  Vue+Weex2）AppCan3）Flutter React Native已经完成了对多端的支持，实现了真正意义上的面向配置开发: 开发人员可以只使用JavaScript也能编写原生移动，结合Reac">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-18T09:52:41.771Z">
-<meta property="article:modified_time" content="2020-03-18T09:53:09.812Z">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img01.jpg">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img02.png">
+<meta property="article:published_time" content="2020-06-06T03:53:27.113Z">
+<meta property="article:modified_time" content="2019-12-18T02:58:40.000Z">
 <meta property="article:author" content="Yang xu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img01.jpg">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/18/webpack/">
+<link rel="canonical" href="http://yoursite.com/2020/06/06/01-ReactNative%E4%BB%8B%E7%BB%8D/">
 
 
 <script id="page-configurations">
@@ -44,7 +47,7 @@
   };
 </script>
 
-  <title>如何解决webpack内存溢出问题 | 杨旭的个人博客</title>
+  <title>01-ReactNative介绍 | 杨旭的个人博客</title>
   
 
 
@@ -169,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/webpack/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/01-ReactNative%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
@@ -182,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          如何解决webpack内存溢出问题
+          01-ReactNative介绍
         </h1>
 
         <div class="post-meta">
@@ -191,10 +194,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-18 17:52:41 / 修改时间：17:53:09" itemprop="dateCreated datePublished" datetime="2020-03-18T17:52:41+08:00">2020-03-18</time>
+              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-12-18 10:58:40" itemprop="dateModified" datetime="2019-12-18T10:58:40+08:00">2019-12-18</time>
+              </span>
 
           
 
@@ -207,7 +216,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>1.由于项目很大，今天打包出现了<br>FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed- process out of memory<br>这种错误，上网查了下说是内存溢出问题，<br>也就是说你的硬件内存有点小，反正不够你打包用，怎么办？<br>接下来修改下面几个地方就可以了<br>node_modules下的bin文件，找到cross-env.cmd还有webpack.cmd文件，在</p>
+        <p> Facebook于2015年9月15日发布<strong>React Native</strong>，发展成长至今，它成为原生手机端App必不可少的开发模式之一。目前比较成熟的跨平台方案:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1）React Native,  Vue+Weex</span><br><span class="line">2）AppCan</span><br><span class="line">3）Flutter</span><br></pre></td></tr></table></figure>
+<p>React Native已经完成了对多端的支持，实现了真正意义上的面向配置开发: 开发人员可以只使用JavaScript也能编写原生移动，结合React语法构建组件，实现：<strong>Android, iOS 两端代码的复用</strong>，并发布上线。</p>
+<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img01.jpg" alt="ReactNative架构图"></p>
+<p> React Native产出的并不是“网页应用”， 或者说“HTML5应用”，又或者“混合应用”，而是一个真正的移动应用，从使用感受上和用Objective-C或Java编写的应用相比几乎是无法区分的。</p>
+<h4 id="一、开发平台选择？"><a href="#一、开发平台选择？" class="headerlink" title="一、开发平台选择？"></a>一、开发平台选择？</h4><p>######1）MacOS系统（推荐）</p>
+<ul>
+<li>iOS和Android都全部支持！</li>
+</ul>
+<p>######2）Windows系统和Linux系统</p>
+<ul>
+<li>目前只支持Android</li>
+</ul>
+<p>####二、选择React Native的优势？<br>######1）跨平台开发</p>
+<p>运用React Native，我们可以使用同一份业务逻辑核心代码来创建原生应用运行在Android端和iOS端；</p>
+<p>######2）追求极致的用户体验：热更新和热部署  </p>
+<p>######3）learn once，write everywhere（最具魅力）<br> React Native不强求一份原生代码支持多个平台，所以不是“Write once, run anywhere”（Java），而是“Learn once, write anywhere”。</p>
+<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img02.png" alt="React Native上层架构图"></p>
+<p>####三、React Native开发注意事项<br> React Native所需要的技术栈比较多，需要良好的JavaScript功底，最好还需要懂一些iOS和Android原生开发，才能很好驾驭中大型移动端跨平台项目。初学者使用RN开发项目，建议选择：</p>
+<ul>
+<li>功能适中，交互一般，不需要特别多的系统原生支持</li>
+<li>对于部分复杂的应用，可以考虑原生+React Native混合开发</li>
+</ul>
 
     </div>
 
@@ -223,12 +254,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/17/react%E5%BD%92%E7%BA%B3/" rel="prev" title="我将总结react在这里">
-      <i class="fa fa-chevron-left"></i> 我将总结react在这里
+    <a href="/2020/03/18/webpack/" rel="prev" title="如何解决webpack内存溢出问题">
+      <i class="fa fa-chevron-left"></i> 如何解决webpack内存溢出问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/06/06/01-ReactNative%E4%BB%8B%E7%BB%8D/" rel="next" title="01-ReactNative介绍">
-      01-ReactNative介绍 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/06/06/02-RN%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="next" title="02-RN环境配置">
+      02-RN环境配置 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -294,6 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、开发平台选择？"><span class="nav-number">1.</span> <span class="nav-text">一、开发平台选择？</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

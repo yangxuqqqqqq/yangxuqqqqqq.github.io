@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一、TextInput文本输入框，相当于OC中的UITextField，在用法和属性方面，两者都有很大的借鉴之处：通过键盘将文本输入到应用程序的一个基本的组件。 本组件的属性提供了多种特性的配置，譬如自动完成、自动大小写、占位文字，以及多种不同的键盘类型（如纯数字键盘）等等。 常用属性 value 字符串型     文本输入的默认值  onChangeText 函数      监听输入框中输入的值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="06-RN常用的组件-中">
+<meta property="og:url" content="http://yoursite.com/2020/06/06/06-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%AD/index.html">
+<meta property="og:site_name" content="杨旭的个人博客">
+<meta property="og:description" content="一、TextInput文本输入框，相当于OC中的UITextField，在用法和属性方面，两者都有很大的借鉴之处：通过键盘将文本输入到应用程序的一个基本的组件。 本组件的属性提供了多种特性的配置，譬如自动完成、自动大小写、占位文字，以及多种不同的键盘类型（如纯数字键盘）等等。 常用属性 value 字符串型     文本输入的默认值  onChangeText 函数      监听输入框中输入的值">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img31.png">
+<meta property="og:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img32.png">
+<meta property="article:published_time" content="2020-06-06T03:53:27.160Z">
+<meta property="article:modified_time" content="2019-11-26T12:52:04.000Z">
+<meta property="article:author" content="Yang xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img31.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/06/06-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%AD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>06-RN常用的组件-中 | 杨旭的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">杨旭的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">天气这么好，欢迎光临阁下小站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-fw fa-heartbeat"></i>公益 404</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa fa-fw fa-books"></i>阅读</a>
+
+  </li>
+        <li class="menu-item menu-item-movies">
+
+    <a href="/movies/" rel="section"><i class="fa fa-fw fa-movies"></i>电影</a>
+
+  </li>
+        <li class="menu-item menu-item-games">
+
+    <a href="/games" rel="section"><i class="fa fa-fw fa-games"></i>游戏</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/06-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          06-RN常用的组件-中
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-26 20:52:04" itemprop="dateModified" datetime="2019-11-26T20:52:04+08:00">2019-11-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一、TextInput"><a href="#一、TextInput" class="headerlink" title="一、TextInput"></a>一、TextInput</h4><p>文本输入框，相当于OC中的UITextField，在用法和属性方面，两者都有很大的借鉴之处：通过键盘将文本输入到应用程序的一个基本的组件。</p>
+<p>本组件的属性提供了多种特性的配置，譬如自动完成、自动大小写、占位文字，以及多种不同的键盘类型（如纯数字键盘）等等。</p>
+<h6 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h6><blockquote>
+<p>value 字符串型</p>
+</blockquote>
+<p>   文本输入的默认值</p>
+<blockquote>
+<p>onChangeText 函数   </p>
+</blockquote>
+<p> 监听输入框中输入的值</p>
+<blockquote>
+<p>keyboardType  键盘类型</p>
+</blockquote>
+<p>决定弹出何种软键盘类型，譬如numeric。</p>
+<p>所有平台都可用：<code>default , number-pad，decimal-pad，numeric，email-address， phone-pad</code>；</p>
+<p>仅iOS可用：<code>ascii-capable，numbers-and-punctuation，url，name-phone-pad，twitter，web-search</code>；</p>
+<p>仅Android平台可用：<code>visible-password</code></p>
+<blockquote>
+<p>multiline  布尔型</p>
+</blockquote>
+<p>如果值为真，文本输入可以输入多行。默认值为假。</p>
+<blockquote>
+<p> placeholder 字符串型</p>
+</blockquote>
+<p>在文本输入之前字符串将被呈现出来，通常被称为占位文字</p>
+<blockquote>
+<p>placeholderTextColor  字符串型</p>
+</blockquote>
+<p>占位符字符串的文本颜色</p>
+<blockquote>
+<p>autoCapitalize</p>
+</blockquote>
+<p>控制TextInput是否要自动将特定字符切换为大写，取值：</p>
+<ul>
+<li>characters：所有字符，</li>
+<li>words：每一个单词的首字母</li>
+<li>sentences：每个句子的首字母（默认情况下）</li>
+<li>none：不会自动使用任何东西</li>
+</ul>
+<blockquote>
+<p>clearButtonMode<br>enum(‘never’, ‘while-editing’, ‘unless-editing’, ‘always’)</p>
+</blockquote>
+<p>清除按钮出现在文本视图右侧的时机，仅在单行模式下可用</p>
+<blockquote>
+<p>editable  布尔型</p>
+</blockquote>
+<p>如果值为假，文本是不可编辑的。默认值为真。</p>
+<blockquote>
+<p>onBlur 函数</p>
+</blockquote>
+<p>当文本框失去焦点的时候调用此回调函数</p>
+<blockquote>
+<p>onChangeText 函数</p>
+</blockquote>
+<p>当文本输入的文本发生变化时，调用回调函数</p>
+<blockquote>
+<p>onFocus 函数</p>
+</blockquote>
+<p>当输入的文本是聚焦状态时，调用回调函数</p>
+<blockquote>
+<p>returnKeyType<br>enum(‘default’, ‘go’, ‘google’, ‘join’, ‘next’, ‘route’, ‘search’, ‘send’, ‘yahoo’, ‘done’, ‘emergency-call’)</p>
+</blockquote>
+<p>决定返回键的样式</p>
+<h4 id="二、Touchable系列组件"><a href="#二、Touchable系列组件" class="headerlink" title="二、Touchable系列组件"></a>二、Touchable系列组件</h4><h6 id="1）高亮触摸-TouchableHighlight"><a href="#1）高亮触摸-TouchableHighlight" class="headerlink" title="1）高亮触摸  TouchableHighlight"></a>1）高亮触摸  TouchableHighlight</h6><p> 当手指点击按下的时候，该视图的不透明度会进行降低同时会看到相应的颜色，其实现原理则是在底层新添加了一个View。此外，TouchableHighlight只能进行一层嵌套，不能多层嵌套。</p>
+<ul>
+<li>常用属性：</li>
+</ul>
+<blockquote>
+<p>activeOpacity  number<br>设置组件在进行触摸的时候，显示的不透明度(取值在0-1之间)</p>
+</blockquote>
+<blockquote>
+<p>onHideUnderlay  function  方法<br> 当底层被隐藏的时候调用</p>
+</blockquote>
+<blockquote>
+<p>onShowUnderlay  function 方法<br>当底层显示的时候调用</p>
+</blockquote>
+<blockquote>
+<p>style<br>可以设置控件的风格演示，该风格演示可以参考View组件的style</p>
+</blockquote>
+<blockquote>
+<p>underlayColor<br>当触摸或者点击控件的时候显示出的颜色</p>
+</blockquote>
+<h6 id="2）不透明触摸-TouchableOpacity"><a href="#2）不透明触摸-TouchableOpacity" class="headerlink" title="2）不透明触摸  TouchableOpacity"></a>2）不透明触摸  TouchableOpacity</h6><p>该组件封装了响应触摸事件；当点击按下的时候，该组件的透明度会降低。</p>
+<ul>
+<li><p>常用属性：</p>
+<blockquote>
+<p>activeOpacity  number<br>设置当用户触摸的时候，组件的透明度</p>
+</blockquote>
+</li>
+<li><p>代码实操</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;TouchableOpacity</span><br><span class="line">                    style&#x3D;&#123;&#123;width: 100, height: 60, backgroundColor:&#39;red&#39;&#125;&#125;</span><br><span class="line">                    activeOpacity&#x3D;&#123;0.5&#125;</span><br><span class="line">                    onPress&#x3D;&#123;()&#x3D;&gt;this.activeEvent(&#39;点击&#39;)&#125;</span><br><span class="line">                    onPressIn&#x3D;&#123;()&#x3D;&gt;this.activeEvent(&#39;按下&#39;)&#125;</span><br><span class="line">                    onPressOut&#x3D;&#123;()&#x3D;&gt;this.activeEvent(&#39;抬起&#39;)&#125;</span><br><span class="line">                    onLongPress&#x3D;&#123;()&#x3D;&gt;this.activeEvent(&#39;长按&#39;)&#125;</span><br><span class="line">                &gt;</span><br><span class="line">                    &lt;Text&gt;按下&lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;TouchableOpacity&gt;</span><br><span class="line"></span><br><span class="line">                &lt;Text&gt;&#123;this.state.eventTag&#125;&lt;&#x2F;Text&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    activeEvent(tag)&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            eventTag: tag</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h4 id="三、按钮"><a href="#三、按钮" class="headerlink" title="三、按钮"></a>三、按钮</h4><p>一个简单的跨平台的按钮组件。可以进行一些简单的定制。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Button</span><br><span class="line">  onPress&#x3D;&#123;()&#x3D;&gt;this.onBtnClick()&#125;</span><br><span class="line">  title&#x3D;&quot;我是一个按钮&quot;</span><br><span class="line">  color&#x3D;&quot;#841584&quot;</span><br><span class="line">  &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="四、案例实操"><a href="#四、案例实操" class="headerlink" title="四、案例实操"></a>四、案例实操</h4><h6 id="1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。"><a href="#1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。" class="headerlink" title="1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。"></a>1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。</h6><ul>
+<li>利用控件的索引index计算出控件所在的行号和列号</li>
+<li>利用列号计算控件的x值</li>
+<li>利用行号计算控件的y值</li>
+</ul>
+<h6 id="2）案例思路截图"><a href="#2）案例思路截图" class="headerlink" title="2）案例思路截图"></a>2）案例思路截图</h6><p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img31.png" alt="案例思路截图"></p>
+<h6 id="3）案例效果图"><a href="#3）案例效果图" class="headerlink" title="3）案例效果图"></a>3）案例效果图</h6><p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img32.png" alt="案例效果图"></p>
+<h6 id="4）案例核心代码"><a href="#4）案例核心代码" class="headerlink" title="4）案例核心代码"></a>4）案例核心代码</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;;</span><br><span class="line">import &#123;</span><br><span class="line">    StyleSheet,</span><br><span class="line">    Text,</span><br><span class="line">    View,</span><br><span class="line">    TouchableOpacity,</span><br><span class="line">    Image,</span><br><span class="line">    Dimensions</span><br><span class="line">&#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line">const &#123;width, height&#125; &#x3D; Dimensions.get(&#39;window&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 获取本地数据</span><br><span class="line">const dataArr &#x3D; require(&#39;.&#x2F;localData&#x2F;packageData.json&#39;);</span><br><span class="line"></span><br><span class="line">export default class LKFlexView extends Component &#123;</span><br><span class="line">    &#x2F;&#x2F; 构造</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        &#x2F;&#x2F; 初始状态</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            &#x2F;&#x2F; 购物车数组</span><br><span class="line">            shopArr: []</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;View style&#x3D;&#123;styles.container&#125;&gt;</span><br><span class="line">                &#123;&#x2F;*上部分*&#x2F;&#125;</span><br><span class="line">                &lt;View style&#x3D;&#123;styles.topViewStyle&#125;&gt;</span><br><span class="line">                    &lt;TouchableOpacity style&#x3D;&#123;styles.clickBtnStyle&#125; onPress&#x3D;&#123;()&#x3D;&gt;this._addShop()&#125;&gt;</span><br><span class="line">                        &lt;Text style&#x3D;&#123;styles.btnTextStyle&#125;&gt;添加商品&lt;&#x2F;Text&gt;</span><br><span class="line">                    &lt;&#x2F;TouchableOpacity&gt;</span><br><span class="line">                    &lt;TouchableOpacity style&#x3D;&#123;[styles.clickBtnStyle, &#123;backgroundColor:&#39;red&#39;&#125;]&#125;  onPress&#x3D;&#123;()&#x3D;&gt;this._removeShop()&#125;&gt;</span><br><span class="line">                        &lt;Text style&#x3D;&#123;styles.btnTextStyle&#125;&gt;删除商品&lt;&#x2F;Text&gt;</span><br><span class="line">                    &lt;&#x2F;TouchableOpacity&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">                &#123;&#x2F;*下部分*&#x2F;&#125;</span><br><span class="line">                &lt;View style&#x3D;&#123;styles.bottomViewStyle&#125;&gt;</span><br><span class="line">                    &#123;this.state.shopArr&#125;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            &lt;&#x2F;View &gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 添加商品</span><br><span class="line">     *&#x2F;</span><br><span class="line">    _addShop() &#123;</span><br><span class="line">        &#x2F;&#x2F; 1. 定义相关的常量(总列数, 商品的宽度\高度)</span><br><span class="line">        const cols &#x3D; 3, shopW &#x3D; 100, shopH &#x3D; 120;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 2. 取出下标</span><br><span class="line">        let index &#x3D; this.state.shopArr.length;</span><br><span class="line">        if(index &gt;&#x3D; 9)&#123;</span><br><span class="line">            alert(&#39;你已经败家够了!!&#39;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 3. 求出当前盒子所在的行数和列数</span><br><span class="line">        let row &#x3D; parseInt(index &#x2F; cols);</span><br><span class="line">        let col &#x3D; parseInt(index % cols);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 4. 求出当前盒子的left和top</span><br><span class="line">        let xSpace &#x3D; (0.9 * width - cols * shopW) &#x2F; (cols - 1);</span><br><span class="line">        let ySpace &#x3D; (0.7 * height - 3 * shopH) &#x2F; 2;</span><br><span class="line"></span><br><span class="line">        let left &#x3D; col * (shopW + xSpace);</span><br><span class="line">        let top &#x3D; row * (shopH + ySpace);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 5. 创建组件装入数组</span><br><span class="line">        let shopView &#x3D; (</span><br><span class="line">            &lt;View style&#x3D;&#123;&#123;</span><br><span class="line">                    position:&#39;absolute&#39;,</span><br><span class="line">                    left: left,</span><br><span class="line">                    top: top,</span><br><span class="line">                    justifyContent:&#39;center&#39;,</span><br><span class="line">                    alignItems:&#39;center&#39;</span><br><span class="line">                  &#125;&#125;</span><br><span class="line">                  key&#x3D;&#123;index&#125;</span><br><span class="line">            &gt;</span><br><span class="line">                &lt;Image source&#x3D;&#123;&#123;uri: dataArr[index].icon&#125;&#125; style&#x3D;&#123;&#123;width:shopW, height:shopW&#125;&#125;&#x2F;&gt;</span><br><span class="line">                &lt;Text&gt;&#123;dataArr[index].name&#125;&lt;&#x2F;Text&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 6. 取出购物车数组</span><br><span class="line">        let tempArr &#x3D; this.state.shopArr;</span><br><span class="line">        tempArr.push(shopView);</span><br><span class="line"></span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            shopArr: tempArr</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 移除商品</span><br><span class="line">     *&#x2F;</span><br><span class="line">    _removeShop() &#123;</span><br><span class="line">        let tempArr &#x3D; this.state.shopArr;</span><br><span class="line">        if(tempArr.length &#x3D;&#x3D;&#x3D; 0)&#123;</span><br><span class="line">            alert(&#39;购物车空空如也~&#39;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tempArr.pop();</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            shopArr: tempArr</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">    container: &#123;</span><br><span class="line">        flex: 1,</span><br><span class="line">        backgroundColor: &#39;#999&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    topViewStyle: &#123;</span><br><span class="line">        flexDirection: &#39;row&#39;,</span><br><span class="line">        margin: 30</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    clickBtnStyle: &#123;</span><br><span class="line">        width: 120,</span><br><span class="line">        height: 40,</span><br><span class="line">        borderRadius: 10,</span><br><span class="line">        backgroundColor: &#39;green&#39;,</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 主轴和侧轴都居中</span><br><span class="line">        justifyContent: &#39;center&#39;,</span><br><span class="line">        alignItems: &#39;center&#39;,</span><br><span class="line">        margin: 10</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    btnTextStyle: &#123;</span><br><span class="line">        backgroundColor: &#39;transparent&#39;,</span><br><span class="line">        fontSize: 16,</span><br><span class="line">        color: &#39;#fff&#39;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    bottomViewStyle: &#123;</span><br><span class="line">        width: 0.9 * width,</span><br><span class="line">        height: 0.7 * height,</span><br><span class="line">        backgroundColor: &#39;#fff&#39;,</span><br><span class="line">        marginLeft: 0.05 * width</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/06/04-Flex%E5%B8%83%E5%B1%80/" rel="prev" title="04-Flex布局">
+      <i class="fa fa-chevron-left"></i> 04-Flex布局
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/06/07-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8B/" rel="next" title="07-RN常用的组件-下">
+      07-RN常用的组件-下 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC80OTE3Ny8yNTY3MQ=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、TextInput"><span class="nav-number">1.</span> <span class="nav-text">一、TextInput</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#常用属性"><span class="nav-number">1.0.1.</span> <span class="nav-text">常用属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、Touchable系列组件"><span class="nav-number">2.</span> <span class="nav-text">二、Touchable系列组件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）高亮触摸-TouchableHighlight"><span class="nav-number">2.0.1.</span> <span class="nav-text">1）高亮触摸  TouchableHighlight</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）不透明触摸-TouchableOpacity"><span class="nav-number">2.0.2.</span> <span class="nav-text">2）不透明触摸  TouchableOpacity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、按钮"><span class="nav-number">3.</span> <span class="nav-text">三、按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、案例实操"><span class="nav-number">4.</span> <span class="nav-text">四、案例实操</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。"><span class="nav-number">4.0.1.</span> <span class="nav-text">1）案例主要技术点：充分利用了RN生命周期的钩子函数，实现界面刷新。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2）案例思路截图"><span class="nav-number">4.0.2.</span> <span class="nav-text">2）案例思路截图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3）案例效果图"><span class="nav-number">4.0.3.</span> <span class="nav-text">3）案例效果图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4）案例核心代码"><span class="nav-number">4.0.4.</span> <span class="nav-text">4）案例核心代码</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Yang xu"
+      src="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+  <p class="site-author-name" itemprop="name">Yang xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yangxuqqqqqq" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yangxuqqqqqq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:6077334@qq.com" title="E-Mail → mailto:6077334@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/Kimchiye" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;Kimchiye" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yang xu</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
