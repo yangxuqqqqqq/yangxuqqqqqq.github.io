@@ -477,6 +477,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/08/react%E5%92%8Cvue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/08/react%E5%92%8Cvue%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">react和vue移动端的适配方案</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-07-08 15:46:51 / 修改时间：15:54:43" itemprop="dateCreated datePublished" datetime="2020-07-08T15:46:51+08:00">2020-07-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>前言:<br>本文的目标是通过下文介绍的适配方案，使用vue或react开发移动端及H5的时候，不需要再关心移动设备的大小，只需要按照固定设计稿的px值布局，提升开发效率。<br>下文给出了本人分别使用create-react-app搭建的react（create-react-app）项目和使用vue-cli 2.x 搭建的vue项目中的 亲测可用 配置方案。<br>px2rem或postcss-px2rem<br>在移动端中，为了设配不同的设备，通常使用rem来做适配。<br>rem是通过根元素进行适配的，网页中的根元素指的是<html>，我们通过设置<html>的字体大小就可以控制 rem 的大小（1rem = 1根元素字体大小）。<br>可见，只要我们根据不同屏幕（使用css媒体查询或js）设定好根元素<html>的字体大小，其他已经使用了rem单位的元素就会自适应显示相应的尺寸。<br>设计稿一般是按照一种特定设备型号（如iphone6）为基础且以px单位来定义样式，为了让设计稿能够通用在不同的设备型号中，则存在着从px到rem的繁琐计算转化过程，因此需要更加科学的方式来使用rem单位。<br>px2rem或postcss-px2rem的原理：将css中px编译为rem，配合js根据不同手机型号计算出dpr的值，修改<meta>的viewport值和置<html>的font-size。<br>项目中的使用<br>recat项目配置postcss-px2rem<br>######首先，我们使用 react 的脚手架 create-react-app 初始化一个 webpack 项目（前提是已经安装过create-react-app，具体不再阐述）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure>
+
+<p>暴露webpack配置，即 react-scripts 包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn eject</span><br></pre></td></tr></table></figure>
+
+<p>使用yarn 安装项目所需依赖后，安装 lib-flexible 、 postcss-px2rem 和 postcss-loader：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn add postcss-px2rem lib-flexible </span><br><span class="line">yarn add postcss-loader --dev</span><br></pre></td></tr></table></figure>
+
+<p>在入口页面 index.html 中设置<meta>标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width,inital-scale&#x3D;1.0,</span><br><span class="line">    maximum-scale&#x3D;1.0,minimum-scale&#x3D;1.0,user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后在项目入口文件 index.js 中引入 lib-flexible：<br>import ‘lib-flexible’;<br>接着，在项目config目录下的 webpack.config.js 中引入 postcss-px2rem ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const px2rem &#x3D; require(&#39;postcss-px2rem&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>同时，在 webpack.config.js 的 postcss-loader loader里面添加 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        loader: require.resolve(&#39;postcss-loader&#39;),</span><br><span class="line">        options: &#123;</span><br><span class="line">          &#x2F;* 省略代码... *&#x2F;</span><br><span class="line">          plugins: () &#x3D;&gt; [</span><br><span class="line">            require(&#39;postcss-flexbugs-fixes&#39;),</span><br><span class="line">            require(&#39;postcss-preset-env&#39;)(&#123;</span><br><span class="line">              autoprefixer: &#123;</span><br><span class="line">                flexbox: &#39;no-2009&#39;,</span><br><span class="line">              &#125;,</span><br><span class="line">              stage: 3,</span><br><span class="line">            &#125;),</span><br><span class="line">            px2rem(&#123;remUnit: 37.5&#125;), &#x2F;&#x2F; 添加的内容</span><br><span class="line">            &#x2F;* 省略代码... *&#x2F;</span><br><span class="line">          ],</span><br><span class="line">          sourceMap: isEnvProduction &amp;&amp; shouldUseSourceMap,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>最后，使用 yarn start 重启项目，则会发现项目中的postcss-px2rem配置完成。<br>vue项目配置px2rem<br>首先，我们使用 vue 的脚手架 vue-cli 初始化一个 webpack 项目（前提是已经安装过vue-cli，具体不再阐述），一些选项根据自己项目需要选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack my-app</span><br></pre></td></tr></table></figure>
+
+<p>命令执行之后，会在当前目录生成一个以“my-app”命名的项目文件夹。进入项目目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd my-app</span><br></pre></td></tr></table></figure>
+
+<p>使用yarn 安装项目所需依赖后，安装 lib-flexible 和 px2rem-loader：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add lib-flexible</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add px2rem-loader --dev</span><br></pre></td></tr></table></figure>
+
+<p>在入口页面 index.html 中设置<meta>标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width,inital-scale&#x3D;1.0,</span><br><span class="line">    maximum-scale&#x3D;1.0,minimum-scale&#x3D;1.0,user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后在项目入口文件 main.js 中引入 lib-flexible：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#39;lib-flexible&#x2F;flexible.js&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>同时，在项目build目录下的 utils.js 中，将px2rem-loader 添加到cssLoaders中。通过搜索找到 generateLoaders 方法，在这里添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">exports.cssLoaders &#x3D; function (options) &#123;</span><br><span class="line">  &#x2F;* 省略代码块 *&#x2F;</span><br><span class="line"></span><br><span class="line">  const cssLoader &#x3D; &#123;</span><br><span class="line">    &#x2F;* 省略代码块 *&#x2F;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#x2F;* 添加的代码块 *&#x2F;</span><br><span class="line">  const px2remLoader &#x3D; &#123;</span><br><span class="line">    loader: &#39;px2rem-loader&#39;,</span><br><span class="line">    options: &#123;</span><br><span class="line">      remUnit: 37.5 &#x2F;&#x2F; 基准大小 baseSize，设计稿宽度&#x2F;10</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#x2F;* 添加的代码块 *&#x2F;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; generate loader string to be used with extract text plugin</span><br><span class="line">  function generateLoaders (loader, loaderOptions) &#123;</span><br><span class="line">    const loaders &#x3D; [cssLoader, px2remLoader] &#x2F;&#x2F; 添加px2remLoader</span><br><span class="line">    if (loader) &#123;</span><br><span class="line">      &#x2F;* 省略代码块 *&#x2F;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;* 省略代码块 *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后，使用 yarn dev 重启项目，会发现自己设置的px被转为rem 了。 </p>
+<p>####适用情况 &amp; 不适用情况<br>####以上实现转换适用于：<br>（1）vue 组件中编写的<style></style>下的css。<br>（2）从 react 项目的 index.js 或者 vue 项目的 main.js 中通过import ‘../../static/css/reset.css’引入css。<br>（3）在 vue 组件的<script type=”text/ecmascript-6″>import ‘../../static/css/reset.css'</script>中引入css。<br>####另外的情况不适用：<br>（1）在 vue 组件的<style></style>中通过@import “../../static/css/reset.css (可考虑上面（2）、（3）的形式引入)。<br>（2）外部样式：<link rel=”stylesheet” href=”static/css/reset.css”>。<br>（3）元素内部样式：style=”height: 417px; width: 550px;”。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/09-React-Navigation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1525,65 +1622,6 @@
 <li>功能适中，交互一般，不需要特别多的系统原生支持</li>
 <li>对于部分复杂的应用，可以考虑原生+React Native混合开发</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
-      <meta itemprop="name" content="Yang xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨旭的个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/18/webpack/" class="post-title-link" itemprop="url">如何解决webpack内存溢出问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-18 17:52:41 / 修改时间：17:53:09" itemprop="dateCreated datePublished" datetime="2020-03-18T17:52:41+08:00">2020-03-18</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1.由于项目很大，今天打包出现了<br>FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed- process out of memory<br>这种错误，上网查了下说是内存溢出问题，<br>也就是说你的硬件内存有点小，反正不够你打包用，怎么办？<br>接下来修改下面几个地方就可以了<br>node_modules下的bin文件，找到cross-env.cmd还有webpack.cmd文件，在</p>
 
       
     </div>
