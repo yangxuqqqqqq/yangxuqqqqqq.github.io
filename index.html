@@ -955,6 +955,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/05-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/06/05-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8A/" class="post-title-link" itemprop="url">05-RN常用的组件-上</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-26 20:49:46" itemprop="dateModified" datetime="2019-11-26T20:49:46+08:00">2019-11-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一、-View组件"><a href="#一、-View组件" class="headerlink" title="一、 View组件"></a>一、 View组件</h4><p>React Native组件View，其作用等同于iOS中的UIView, Android中的android.view，或是网页中的<div>标签，它是所有页面组件的父组件。使用方式无差异化，基本用于容器使用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;SafeAreaView style&#x3D;&#123;&#123;flex: 1&#125;&#125;&gt;</span><br><span class="line">          &lt;View style&#x3D;&#123;&#123;flex: 1, backgroundColor: &#39;cyan&#39;&#125;&#125;&gt;</span><br><span class="line">            &lt;View style&#x3D;&#123;styles.view1&#125;&gt;</span><br><span class="line">              &lt;Text style&#x3D;&#123;&#123;color: &#39;#fff&#39;, fontSize: 18&#125;&#125;&gt;内容区域&lt;&#x2F;Text&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">          &lt;&#x2F;View&gt;</span><br><span class="line">        &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  view1: &#123;</span><br><span class="line">    width: 150,</span><br><span class="line">    height: 200,</span><br><span class="line">    backgroundColor:&#39;purple&#39;,</span><br><span class="line">    marginLeft: 100,</span><br><span class="line">    marginTop: 100,</span><br><span class="line">    padding: 30</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="二、Text组件"><a href="#二、Text组件" class="headerlink" title="二、Text组件"></a>二、Text组件</h4><p>一个用于显示文本的ReactNative组件，和Android中的TextView组件或者OC中的UILabel组件相类似，专门用来显示基本的文本信息；除了基本的显示布局之外，可以进行嵌套显示，设置样式，以及可以做事件(例如:点击)处理。</p>
+<ul>
+<li><p>常用属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#96;color&#96; 字体颜色</span><br><span class="line"> &#96;numberOfLines&#96; (number) 进行设置Text显示文本的行数，如果显示的内容超过了行数，默认其他多余的信息就不会显示了</span><br><span class="line">&#96;ellipsizeMode&#96; 这个属性通常和下面的 numberOfLines 属性配合使用，表示当 Text 组件无法全部显示需要显示的字符串时如何用省略号进行修饰。取值：enum(&#39;head&#39;, &#39;middle&#39;, &#39;tail&#39;, &#39;clip&#39;)</span><br><span class="line">&#96;onPress&#96; (fcuntion)  该方法当文本发生点击的时候调用该方法</span><br><span class="line"></span><br><span class="line"> &#96;color&#96;  字体颜色</span><br><span class="line">&#96;fontFamily&#96;  字体名称</span><br><span class="line">&#96;fontSize&#96;  字体大小</span><br><span class="line">&#96;fontStyle&#96;   字体风格(normal,italic)</span><br><span class="line">&#96;fontWeight &#96; 字体粗细权重(&quot;normal&quot;, &#39;bold&#39;, &#39;100&#39;, &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;500&#39;, &#39;600&#39;, &#39;700&#39;, &#39;800&#39;, &#39;900&#39;)</span><br><span class="line">&#96;textShadowOffset&#96;  设置阴影效果&#123;width: number, height: number&#125;</span><br><span class="line">&#96;textShadowRadius&#96;  阴影效果圆角</span><br><span class="line">&#96;textShadowColor&#96;  阴影效果的颜色</span><br><span class="line">&#96;letterSpacing&#96;  字符间距</span><br><span class="line">&#96;lineHeight&#96;  行高</span><br><span class="line">&#96;textAlign&#96;   文本对其方式(&quot;auto&quot;, &#39;left&#39;, &#39;right&#39;, &#39;center&#39;, &#39;justify&#39;)</span><br><span class="line">&#96;textDecorationLine&#96;  横线位置 (&quot;none&quot;, &#39;underline&#39;, &#39;line-through&#39;, &#39;underline line-through&#39;)</span><br><span class="line">&#96;textDecorationStyle&#96; 线的风格(&quot;solid&quot;, &#39;double&#39;, &#39;dotted&#39;, &#39;dashed&#39;)</span><br><span class="line"> &#96;textDecorationColor&#96; 线的颜色</span><br><span class="line">&#96;writingDirection&#96; 文本方向(&quot;auto&quot;, &#39;ltr&#39;, &#39;rtl&#39;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>课程代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;;</span><br><span class="line">import &#123; Text, StyleSheet, View &#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line">export default class LKText extends Component &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            titleText: &#39;撩课学院&#39;,</span><br><span class="line">            subText: &#39;喜欢IT,就上撩课！&#39;,</span><br><span class="line">            bodyText: &#39;对酒当歌，人生几何！对酒当歌，人生几何！对酒当歌，人生几何！&#39;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;&gt;</span><br><span class="line">                &lt;Text style&#x3D;&#123;styles.baseText&#125;&gt;</span><br><span class="line">                    &lt;Text style&#x3D;&#123;styles.titleText&#125;&gt;</span><br><span class="line">                        &#123;this.state.titleText&#125;&#123;&#39;\n&#39;&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                    &lt;Text&gt;</span><br><span class="line">                        &#123;this.state.subText&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;View style&#x3D;&#123;&#123;backgroundColor:&#39;red&#39;, width: 300, height: 200&#125;&#125;&gt;</span><br><span class="line">                    &lt;Text</span><br><span class="line">                        style&#x3D;&#123;&#123;fontSize: 20, lineHeight: 40&#125;&#125;</span><br><span class="line">                        numberOfLines&#x3D;&#123;4&#125;</span><br><span class="line">                        ellipsizeMode&#x3D;&#39;middle&#39;</span><br><span class="line">                    &gt;</span><br><span class="line">                        &#123;this.state.bodyText&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            &lt;&#x2F;&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">    baseText: &#123;</span><br><span class="line">        fontFamily: &#39;Cochin&#39;,</span><br><span class="line">        fontSize: 30</span><br><span class="line">    &#125;,</span><br><span class="line">    titleText: &#123;</span><br><span class="line">        fontSize: 40,</span><br><span class="line">        fontWeight: &#39;bold&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="三、Image组件"><a href="#三、Image组件" class="headerlink" title="三、Image组件"></a>三、Image组件</h4><p>在开发中还有一个非常重要的组件Image，通过这个组件可以展示各种各样的图片，而且在React Native中该组件可以通过多种方式加载图片资源。包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片（如相册）等。</p>
+<ul>
+<li>常用使用，三种加载方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">       return (</span><br><span class="line">           &lt;View&gt;</span><br><span class="line">               &#123;&#x2F;*本地加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   source&#x3D;&#123;require(&#39;.&#x2F;images&#x2F;bit.jpeg&#39;)&#125;</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 200, height: 200&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">               &#123;&#x2F;*网络加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">                   source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">               &#123;&#x2F;*base64加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 66, height: 58&#125;&#125;</span><br><span class="line">                   source&#x3D;&#123;&#123;uri: &#39;data:image&#x2F;png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2&#x2F;ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P&#x2F;eMrC5UTVAAAAABJRU5ErkJggg&#x3D;&#x3D;&#39;&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">           &lt;&#x2F;View&gt;</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+<li>设置图片的显示模式，resizeMode，常用取值有：<code>center、repeat、contain、cover、stretch</code>。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Image</span><br><span class="line">                    style&#x3D;&#123;&#123;width: 400, height: 300, resizeMode: &#39;stretch&#39;, backgroundColor:&#39;red&#39;&#125;&#125;</span><br><span class="line">                    source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">                &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>设置背景图片-ImageBackground组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">       return (</span><br><span class="line">           &lt;View&gt;</span><br><span class="line">               &lt;ImageBackground</span><br><span class="line">                   source&#x3D;&#123;require(&#39;.&#x2F;images&#x2F;lk.jpg&#39;)&#125;</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 400, height: 200&#125;&#125;</span><br><span class="line">               &gt;</span><br><span class="line">                   &lt;Image</span><br><span class="line">                       style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">                       source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">                   &#x2F;&gt;</span><br><span class="line">                   &lt;Text style&#x3D;&#123;&#123;color:&#39;#fff&#39;&#125;&#125;&gt;我是小撩同学！&lt;&#x2F;Text&gt;</span><br><span class="line">               &lt;&#x2F;ImageBackground&gt;</span><br><span class="line">           &lt;&#x2F;View&gt;</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Image组件的小练习</p>
+</li>
+</ul>
+<p>通过一款包包的展示，总结前面所学的View，Text和今天的Image组件，具体效果如下:</p>
+<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img30.png" alt="image.png"></p>
+<p>核心代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">_renderItem() &#123;</span><br><span class="line">        &#x2F;&#x2F; 1. 组件数组</span><br><span class="line">        let itemArr &#x3D; [];</span><br><span class="line">        &#x2F;&#x2F; 2. 遍历数据数组</span><br><span class="line">        for (let i &#x3D; 0; i &lt; dataArr.length; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 2.1 取出单个数据</span><br><span class="line">            let data &#x3D; dataArr[i];</span><br><span class="line">            &#x2F;&#x2F; 2.2 根据数据创建组件装入组件数组</span><br><span class="line">            itemArr.push(</span><br><span class="line">                &lt;View key&#x3D;&#123;i&#125; style&#x3D;&#123;styles.itemViewStyle&#125;&gt;</span><br><span class="line">                    &lt;Image source&#x3D;&#123;&#123;uri: data.icon&#125;&#125; style&#x3D;&#123;&#123;width:80, height:80&#125;&#125;&#x2F;&gt;</span><br><span class="line">                    &lt;Text&gt;&#123;data.name&#125;&lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 3. 返回数组</span><br><span class="line">        return itemArr;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/04-Flex%E5%B8%83%E5%B1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1072,210 +1169,6 @@
 <p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
 <p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img29.jpg" alt="image"></p>
 <h4 id="四、在React-Native中使用Flexbox"><a href="#四、在React-Native中使用Flexbox" class="headerlink" title="四、在React Native中使用Flexbox"></a>四、在React Native中使用Flexbox</h4><h6 id="4-1-获取当前屏幕的宽度、高度、分辨率"><a href="#4-1-获取当前屏幕的宽度、高度、分辨率" class="headerlink" title="4.1  获取当前屏幕的宽度、高度、分辨率"></a>4.1  获取当前屏幕的宽度、高度、分辨率</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;StatusBar barStyle&#x3D;&quot;dark-content&quot;&#x2F;&gt;</span><br><span class="line">            &lt;SafeAreaView style&#x3D;&#123;&#123;flex: 1&#125;&#125;&gt;</span><br><span class="line">                &lt;View style&#x3D;&#123;&#123;flex: 1, backgroundColor: &#39;red&#39;&#125;&#125;&gt;</span><br><span class="line">                   &lt;Text&gt;</span><br><span class="line">                     当前屏幕的宽度：&#123;Dimensions.get(&#39;window&#39;).width + &#39;\n&#39;&#125;</span><br><span class="line">                     当前屏幕的高度：&#123;Dimensions.get(&#39;window&#39;).height + &#39;\n&#39;&#125;</span><br><span class="line">                     当前屏幕的分辨率：&#123;Dimensions.get(&#39;window&#39;).scale + &#39;\n&#39;&#125;</span><br><span class="line">                   &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">        &lt;&#x2F;&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/05-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
-      <meta itemprop="name" content="Yang xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨旭的个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/06/05-RN%E5%B8%B8%E7%94%A8%E7%9A%84%E7%BB%84%E4%BB%B6-%E4%B8%8A/" class="post-title-link" itemprop="url">05-RN常用的组件-上</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-26 20:49:46" itemprop="dateModified" datetime="2019-11-26T20:49:46+08:00">2019-11-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="一、-View组件"><a href="#一、-View组件" class="headerlink" title="一、 View组件"></a>一、 View组件</h4><p>React Native组件View，其作用等同于iOS中的UIView, Android中的android.view，或是网页中的<div>标签，它是所有页面组件的父组件。使用方式无差异化，基本用于容器使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;SafeAreaView style&#x3D;&#123;&#123;flex: 1&#125;&#125;&gt;</span><br><span class="line">          &lt;View style&#x3D;&#123;&#123;flex: 1, backgroundColor: &#39;cyan&#39;&#125;&#125;&gt;</span><br><span class="line">            &lt;View style&#x3D;&#123;styles.view1&#125;&gt;</span><br><span class="line">              &lt;Text style&#x3D;&#123;&#123;color: &#39;#fff&#39;, fontSize: 18&#125;&#125;&gt;内容区域&lt;&#x2F;Text&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">          &lt;&#x2F;View&gt;</span><br><span class="line">        &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  view1: &#123;</span><br><span class="line">    width: 150,</span><br><span class="line">    height: 200,</span><br><span class="line">    backgroundColor:&#39;purple&#39;,</span><br><span class="line">    marginLeft: 100,</span><br><span class="line">    marginTop: 100,</span><br><span class="line">    padding: 30</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="二、Text组件"><a href="#二、Text组件" class="headerlink" title="二、Text组件"></a>二、Text组件</h4><p>一个用于显示文本的ReactNative组件，和Android中的TextView组件或者OC中的UILabel组件相类似，专门用来显示基本的文本信息；除了基本的显示布局之外，可以进行嵌套显示，设置样式，以及可以做事件(例如:点击)处理。</p>
-<ul>
-<li><p>常用属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#96;color&#96; 字体颜色</span><br><span class="line"> &#96;numberOfLines&#96; (number) 进行设置Text显示文本的行数，如果显示的内容超过了行数，默认其他多余的信息就不会显示了</span><br><span class="line">&#96;ellipsizeMode&#96; 这个属性通常和下面的 numberOfLines 属性配合使用，表示当 Text 组件无法全部显示需要显示的字符串时如何用省略号进行修饰。取值：enum(&#39;head&#39;, &#39;middle&#39;, &#39;tail&#39;, &#39;clip&#39;)</span><br><span class="line">&#96;onPress&#96; (fcuntion)  该方法当文本发生点击的时候调用该方法</span><br><span class="line"></span><br><span class="line"> &#96;color&#96;  字体颜色</span><br><span class="line">&#96;fontFamily&#96;  字体名称</span><br><span class="line">&#96;fontSize&#96;  字体大小</span><br><span class="line">&#96;fontStyle&#96;   字体风格(normal,italic)</span><br><span class="line">&#96;fontWeight &#96; 字体粗细权重(&quot;normal&quot;, &#39;bold&#39;, &#39;100&#39;, &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;500&#39;, &#39;600&#39;, &#39;700&#39;, &#39;800&#39;, &#39;900&#39;)</span><br><span class="line">&#96;textShadowOffset&#96;  设置阴影效果&#123;width: number, height: number&#125;</span><br><span class="line">&#96;textShadowRadius&#96;  阴影效果圆角</span><br><span class="line">&#96;textShadowColor&#96;  阴影效果的颜色</span><br><span class="line">&#96;letterSpacing&#96;  字符间距</span><br><span class="line">&#96;lineHeight&#96;  行高</span><br><span class="line">&#96;textAlign&#96;   文本对其方式(&quot;auto&quot;, &#39;left&#39;, &#39;right&#39;, &#39;center&#39;, &#39;justify&#39;)</span><br><span class="line">&#96;textDecorationLine&#96;  横线位置 (&quot;none&quot;, &#39;underline&#39;, &#39;line-through&#39;, &#39;underline line-through&#39;)</span><br><span class="line">&#96;textDecorationStyle&#96; 线的风格(&quot;solid&quot;, &#39;double&#39;, &#39;dotted&#39;, &#39;dashed&#39;)</span><br><span class="line"> &#96;textDecorationColor&#96; 线的颜色</span><br><span class="line">&#96;writingDirection&#96; 文本方向(&quot;auto&quot;, &#39;ltr&#39;, &#39;rtl&#39;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>课程代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from &#39;react&#39;;</span><br><span class="line">import &#123; Text, StyleSheet, View &#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line">export default class LKText extends Component &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            titleText: &#39;撩课学院&#39;,</span><br><span class="line">            subText: &#39;喜欢IT,就上撩课！&#39;,</span><br><span class="line">            bodyText: &#39;对酒当歌，人生几何！对酒当歌，人生几何！对酒当歌，人生几何！&#39;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;&gt;</span><br><span class="line">                &lt;Text style&#x3D;&#123;styles.baseText&#125;&gt;</span><br><span class="line">                    &lt;Text style&#x3D;&#123;styles.titleText&#125;&gt;</span><br><span class="line">                        &#123;this.state.titleText&#125;&#123;&#39;\n&#39;&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                    &lt;Text&gt;</span><br><span class="line">                        &#123;this.state.subText&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;View style&#x3D;&#123;&#123;backgroundColor:&#39;red&#39;, width: 300, height: 200&#125;&#125;&gt;</span><br><span class="line">                    &lt;Text</span><br><span class="line">                        style&#x3D;&#123;&#123;fontSize: 20, lineHeight: 40&#125;&#125;</span><br><span class="line">                        numberOfLines&#x3D;&#123;4&#125;</span><br><span class="line">                        ellipsizeMode&#x3D;&#39;middle&#39;</span><br><span class="line">                    &gt;</span><br><span class="line">                        &#123;this.state.bodyText&#125;</span><br><span class="line">                    &lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            &lt;&#x2F;&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">    baseText: &#123;</span><br><span class="line">        fontFamily: &#39;Cochin&#39;,</span><br><span class="line">        fontSize: 30</span><br><span class="line">    &#125;,</span><br><span class="line">    titleText: &#123;</span><br><span class="line">        fontSize: 40,</span><br><span class="line">        fontWeight: &#39;bold&#39;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h4 id="三、Image组件"><a href="#三、Image组件" class="headerlink" title="三、Image组件"></a>三、Image组件</h4><p>在开发中还有一个非常重要的组件Image，通过这个组件可以展示各种各样的图片，而且在React Native中该组件可以通过多种方式加载图片资源。包括网络图片、静态资源、临时的本地图片、以及本地磁盘上的图片（如相册）等。</p>
-<ul>
-<li>常用使用，三种加载方式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">       return (</span><br><span class="line">           &lt;View&gt;</span><br><span class="line">               &#123;&#x2F;*本地加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   source&#x3D;&#123;require(&#39;.&#x2F;images&#x2F;bit.jpeg&#39;)&#125;</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 200, height: 200&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">               &#123;&#x2F;*网络加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">                   source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">               &#123;&#x2F;*base64加载*&#x2F;&#125;</span><br><span class="line">               &lt;Image</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 66, height: 58&#125;&#125;</span><br><span class="line">                   source&#x3D;&#123;&#123;uri: &#39;data:image&#x2F;png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2&#x2F;ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P&#x2F;eMrC5UTVAAAAABJRU5ErkJggg&#x3D;&#x3D;&#39;&#125;&#125;</span><br><span class="line">               &#x2F;&gt;</span><br><span class="line">           &lt;&#x2F;View&gt;</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
-<li>设置图片的显示模式，resizeMode，常用取值有：<code>center、repeat、contain、cover、stretch</code>。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;View&gt;</span><br><span class="line">                &lt;Image</span><br><span class="line">                    style&#x3D;&#123;&#123;width: 400, height: 300, resizeMode: &#39;stretch&#39;, backgroundColor:&#39;red&#39;&#125;&#125;</span><br><span class="line">                    source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">                &#x2F;&gt;</span><br><span class="line">            &lt;&#x2F;View&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>设置背景图片-ImageBackground组件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">       return (</span><br><span class="line">           &lt;View&gt;</span><br><span class="line">               &lt;ImageBackground</span><br><span class="line">                   source&#x3D;&#123;require(&#39;.&#x2F;images&#x2F;lk.jpg&#39;)&#125;</span><br><span class="line">                   style&#x3D;&#123;&#123;width: 400, height: 200&#125;&#125;</span><br><span class="line">               &gt;</span><br><span class="line">                   &lt;Image</span><br><span class="line">                       style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">                       source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">                   &#x2F;&gt;</span><br><span class="line">                   &lt;Text style&#x3D;&#123;&#123;color:&#39;#fff&#39;&#125;&#125;&gt;我是小撩同学！&lt;&#x2F;Text&gt;</span><br><span class="line">               &lt;&#x2F;ImageBackground&gt;</span><br><span class="line">           &lt;&#x2F;View&gt;</span><br><span class="line">       );</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Image组件的小练习</p>
-</li>
-</ul>
-<p>通过一款包包的展示，总结前面所学的View，Text和今天的Image组件，具体效果如下:</p>
-<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img30.png" alt="image.png"></p>
-<p>核心代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">_renderItem() &#123;</span><br><span class="line">        &#x2F;&#x2F; 1. 组件数组</span><br><span class="line">        let itemArr &#x3D; [];</span><br><span class="line">        &#x2F;&#x2F; 2. 遍历数据数组</span><br><span class="line">        for (let i &#x3D; 0; i &lt; dataArr.length; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 2.1 取出单个数据</span><br><span class="line">            let data &#x3D; dataArr[i];</span><br><span class="line">            &#x2F;&#x2F; 2.2 根据数据创建组件装入组件数组</span><br><span class="line">            itemArr.push(</span><br><span class="line">                &lt;View key&#x3D;&#123;i&#125; style&#x3D;&#123;styles.itemViewStyle&#125;&gt;</span><br><span class="line">                    &lt;Image source&#x3D;&#123;&#123;uri: data.icon&#125;&#125; style&#x3D;&#123;&#123;width:80, height:80&#125;&#125;&#x2F;&gt;</span><br><span class="line">                    &lt;Text&gt;&#123;data.name&#125;&lt;&#x2F;Text&gt;</span><br><span class="line">                &lt;&#x2F;View&gt;</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 3. 返回数组</span><br><span class="line">        return itemArr;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
-      <meta itemprop="name" content="Yang xu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="杨旭的个人博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">03-RN工程启动流程</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-26 20:44:44" itemprop="dateModified" datetime="2019-11-26T20:44:44+08:00">2019-11-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="一、React-Native工程结构分析"><a href="#一、React-Native工程结构分析" class="headerlink" title="一、React Native工程结构分析"></a>一、React Native工程结构分析</h4><h6 id="1-初始化RN工程"><a href="#1-初始化RN工程" class="headerlink" title="1) 初始化RN工程"></a>1) 初始化RN工程</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init LKDemo2</span><br></pre></td></tr></table></figure>
-
-
-<h6 id="2-工程目录结构图"><a href="#2-工程目录结构图" class="headerlink" title="2) 工程目录结构图"></a>2) 工程目录结构图</h6><p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img16.png" alt="工程目录结构图"></p>
-<h6 id="3）工程启动流程分析"><a href="#3）工程启动流程分析" class="headerlink" title="3）工程启动流程分析"></a>3）工程启动流程分析</h6><ul>
-<li>iOS工程或安卓工程一启动，就会加载目录中<code>index.js</code>文件，通过<code>AppRegistry</code>去注册组件，并且把注册完成的组件输出给iOS端或Android端：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入注册组件模块</span><br><span class="line">import &#123;AppRegistry&#125; from &#39;react-native&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入组件汇总模块</span><br><span class="line">import App from &#39;.&#x2F;App&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入输出组件名称</span><br><span class="line">import &#123;name as appName&#125; from &#39;.&#x2F;app.json&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 注册组件，程序主入口</span><br><span class="line">&#x2F;&#x2F; appName: 注册模块名称</span><br><span class="line">&#x2F;&#x2F; () &#x3D;&gt; App: 组件类，程序启动会自动加载该类实例化的组件对象</span><br><span class="line">AppRegistry.registerComponent(appName, () &#x3D;&gt; App);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>通过Xcode打开iOS工程，或者Android Studio打开Android工程，此处以iOS端为例子。找到AppDelegate.m文件，查看客户端加载方法：</li>
-</ul>
-<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img17.png" alt="AppDelegate.m"></p>
-<ul>
-<li><p>代理文件中通过该方法加载JS端输出的模块，注意模块的名称两端必须保持一致：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initWithBridge:bridge moduleName:@&quot;MyRNDemo&quot; initialProperties:nil</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>代理文件解析加载注释如下</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F; 1. 获取桥接文件</span><br><span class="line">  RCTBridge *bridge &#x3D; [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];</span><br><span class="line">  &#x2F;&#x2F; 2. 根据模块加载根视图</span><br><span class="line">  RCTRootView *rootView &#x3D; [[RCTRootView alloc] initWithBridge:bridge</span><br><span class="line">                                                   moduleName:@&quot;MyRNDemo&quot;</span><br><span class="line">                                            initialProperties:nil];</span><br><span class="line"></span><br><span class="line">  rootView.backgroundColor &#x3D; [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 3. 设置窗口</span><br><span class="line">  self.window &#x3D; [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 4. 设置窗口根控制器的view</span><br><span class="line">  UIViewController *rootViewController &#x3D; [UIViewController new];</span><br><span class="line">  rootViewController.view &#x3D; rootView;</span><br><span class="line">  self.window.rootViewController &#x3D; rootViewController;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 5. 显示窗口</span><br><span class="line">  [self.window makeKeyAndVisible];</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h6 id="4）App-js文件运行步骤"><a href="#4）App-js文件运行步骤" class="headerlink" title="4）App.js文件运行步骤"></a>4）App.js文件运行步骤</h6><ul>
-<li>加载React模块，使用其内部的API，比如：jsx语法；</li>
-<li>加载React Native原生组件，比如：<code>SafeAreaView, StyleSheet, View, Text,Image</code>等；</li>
-<li>自定义组件类，作为模块的输出；</li>
-<li>创建样式对象，传入样式对象，根据样式中的对象描述，创建样式表</li>
-<li>导出当前模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 撩课学院</span><br><span class="line"> * https:&#x2F;&#x2F;itlike.com</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1. 加载React模块</span><br><span class="line">import React from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 加载原生组件</span><br><span class="line">import &#123;</span><br><span class="line">  SafeAreaView,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  StatusBar,</span><br><span class="line">  Image</span><br><span class="line">&#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 自定义组件（程序入口组件）</span><br><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;StatusBar barStyle&#x3D;&quot;dark-content&quot; &#x2F;&gt;</span><br><span class="line">      &lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt;</span><br><span class="line">         &lt;View style&#x3D;&#123;styles.viewStyle&#125;&gt;</span><br><span class="line">           &lt;Image</span><br><span class="line">               style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">               source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">           &#x2F;&gt;</span><br><span class="line">           &lt;Text style&#x3D;&#123;styles.textStyle&#125;&gt;小撩陪你开启RN学习之旅！&lt;&#x2F;Text&gt;</span><br><span class="line">         &lt;&#x2F;View&gt;</span><br><span class="line">      &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 创建样式对象</span><br><span class="line">&#x2F;&#x2F; 传入样式对象，根据样式中的对象描述，创建样式表</span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  safeView: &#123;</span><br><span class="line">    flex: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  textStyle: &#123;</span><br><span class="line">    fontSize: 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 5. 导出当前模块</span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h4 id="二、React-Native语法分析"><a href="#二、React-Native语法分析" class="headerlink" title="二、React Native语法分析"></a>二、React Native语法分析</h4><h6 id="1）JSX语法"><a href="#1）JSX语法" class="headerlink" title="1）JSX语法"></a>1）JSX语法</h6><p>JSX语法是一个比较高级但很直观的JS语法糖。我们在创建View的结构是，可以用类似HTML标签的形式创建，当然最终在编译是还是会转换成JS代码。</p>
-<ul>
-<li>函数中只要返回组件，都需要用()包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">      &lt;View&gt;&lt;&#x2F;View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>函数中除字符串以外，赋值时都需要用{}包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt; &lt;&#x2F;SafeAreaView&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Image style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125; source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">          &#x2F;&gt;</span><br></pre></td></tr></table></figure></li>
-<li>组件内使用变量时，都需要用大括号包裹，否则会被当成普通字符串处理。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str &#x3D; &#39;引擎计划&#39;;</span><br><span class="line">&lt;Text&gt;&#123;str&#125;&lt;&#x2F;Text&gt;</span><br></pre></td></tr></table></figure>
-<h6 id="2）样式对象文件"><a href="#2）样式对象文件" class="headerlink" title="2）样式对象文件"></a>2）样式对象文件</h6>内部以键值对的形式，取值如同JS中的对象调用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-</ul>
-
       
     </div>
 
@@ -1437,6 +1330,113 @@
 <li>npm包地址 ：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;react-native</span><br></pre></td></tr></table></figure></li>
 <li>命令行查询： <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm info react-native</span><br></pre></td></tr></table></figure></li>
 <li>查询效果：<br><img src="/Users/a123/Desktop/React-Native/%E7%AC%94%E8%AE%B0/images/img15.jpg" alt="image"></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="http://pic2.zhimg.com/50/v2-fb824dbb6578831f7b5d92accdae753a_hd.jpg">
+      <meta itemprop="name" content="Yang xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杨旭的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/06/03-RN%E5%B7%A5%E7%A8%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">03-RN工程启动流程</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-06 11:53:27" itemprop="dateCreated datePublished" datetime="2020-06-06T11:53:27+08:00">2020-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-26 20:44:44" itemprop="dateModified" datetime="2019-11-26T20:44:44+08:00">2019-11-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一、React-Native工程结构分析"><a href="#一、React-Native工程结构分析" class="headerlink" title="一、React Native工程结构分析"></a>一、React Native工程结构分析</h4><h6 id="1-初始化RN工程"><a href="#1-初始化RN工程" class="headerlink" title="1) 初始化RN工程"></a>1) 初始化RN工程</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init LKDemo2</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2-工程目录结构图"><a href="#2-工程目录结构图" class="headerlink" title="2) 工程目录结构图"></a>2) 工程目录结构图</h6><p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img16.png" alt="工程目录结构图"></p>
+<h6 id="3）工程启动流程分析"><a href="#3）工程启动流程分析" class="headerlink" title="3）工程启动流程分析"></a>3）工程启动流程分析</h6><ul>
+<li>iOS工程或安卓工程一启动，就会加载目录中<code>index.js</code>文件，通过<code>AppRegistry</code>去注册组件，并且把注册完成的组件输出给iOS端或Android端：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 引入注册组件模块</span><br><span class="line">import &#123;AppRegistry&#125; from &#39;react-native&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入组件汇总模块</span><br><span class="line">import App from &#39;.&#x2F;App&#39;;</span><br><span class="line">&#x2F;&#x2F; 引入输出组件名称</span><br><span class="line">import &#123;name as appName&#125; from &#39;.&#x2F;app.json&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 注册组件，程序主入口</span><br><span class="line">&#x2F;&#x2F; appName: 注册模块名称</span><br><span class="line">&#x2F;&#x2F; () &#x3D;&gt; App: 组件类，程序启动会自动加载该类实例化的组件对象</span><br><span class="line">AppRegistry.registerComponent(appName, () &#x3D;&gt; App);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过Xcode打开iOS工程，或者Android Studio打开Android工程，此处以iOS端为例子。找到AppDelegate.m文件，查看客户端加载方法：</li>
+</ul>
+<p><img src="/Users/a123/Desktop/Flutter/LearnFlutterNodes/images/img17.png" alt="AppDelegate.m"></p>
+<ul>
+<li><p>代理文件中通过该方法加载JS端输出的模块，注意模块的名称两端必须保持一致：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initWithBridge:bridge moduleName:@&quot;MyRNDemo&quot; initialProperties:nil</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>代理文件解析加载注释如下</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions</span><br><span class="line">&#123;</span><br><span class="line">  &#x2F;&#x2F; 1. 获取桥接文件</span><br><span class="line">  RCTBridge *bridge &#x3D; [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];</span><br><span class="line">  &#x2F;&#x2F; 2. 根据模块加载根视图</span><br><span class="line">  RCTRootView *rootView &#x3D; [[RCTRootView alloc] initWithBridge:bridge</span><br><span class="line">                                                   moduleName:@&quot;MyRNDemo&quot;</span><br><span class="line">                                            initialProperties:nil];</span><br><span class="line"></span><br><span class="line">  rootView.backgroundColor &#x3D; [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 3. 设置窗口</span><br><span class="line">  self.window &#x3D; [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 4. 设置窗口根控制器的view</span><br><span class="line">  UIViewController *rootViewController &#x3D; [UIViewController new];</span><br><span class="line">  rootViewController.view &#x3D; rootView;</span><br><span class="line">  self.window.rootViewController &#x3D; rootViewController;</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F; 5. 显示窗口</span><br><span class="line">  [self.window makeKeyAndVisible];</span><br><span class="line">  return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="4）App-js文件运行步骤"><a href="#4）App-js文件运行步骤" class="headerlink" title="4）App.js文件运行步骤"></a>4）App.js文件运行步骤</h6><ul>
+<li>加载React模块，使用其内部的API，比如：jsx语法；</li>
+<li>加载React Native原生组件，比如：<code>SafeAreaView, StyleSheet, View, Text,Image</code>等；</li>
+<li>自定义组件类，作为模块的输出；</li>
+<li>创建样式对象，传入样式对象，根据样式中的对象描述，创建样式表</li>
+<li>导出当前模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 撩课学院</span><br><span class="line"> * https:&#x2F;&#x2F;itlike.com</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1. 加载React模块</span><br><span class="line">import React from &#39;react&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2. 加载原生组件</span><br><span class="line">import &#123;</span><br><span class="line">  SafeAreaView,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  View,</span><br><span class="line">  Text,</span><br><span class="line">  StatusBar,</span><br><span class="line">  Image</span><br><span class="line">&#125; from &#39;react-native&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 3. 自定义组件（程序入口组件）</span><br><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;StatusBar barStyle&#x3D;&quot;dark-content&quot; &#x2F;&gt;</span><br><span class="line">      &lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt;</span><br><span class="line">         &lt;View style&#x3D;&#123;styles.viewStyle&#125;&gt;</span><br><span class="line">           &lt;Image</span><br><span class="line">               style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125;</span><br><span class="line">               source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">           &#x2F;&gt;</span><br><span class="line">           &lt;Text style&#x3D;&#123;styles.textStyle&#125;&gt;小撩陪你开启RN学习之旅！&lt;&#x2F;Text&gt;</span><br><span class="line">         &lt;&#x2F;View&gt;</span><br><span class="line">      &lt;&#x2F;SafeAreaView&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 4. 创建样式对象</span><br><span class="line">&#x2F;&#x2F; 传入样式对象，根据样式中的对象描述，创建样式表</span><br><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  safeView: &#123;</span><br><span class="line">    flex: 1</span><br><span class="line">  &#125;,</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  textStyle: &#123;</span><br><span class="line">    fontSize: 20</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 5. 导出当前模块</span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h4 id="二、React-Native语法分析"><a href="#二、React-Native语法分析" class="headerlink" title="二、React Native语法分析"></a>二、React Native语法分析</h4><h6 id="1）JSX语法"><a href="#1）JSX语法" class="headerlink" title="1）JSX语法"></a>1）JSX语法</h6><p>JSX语法是一个比较高级但很直观的JS语法糖。我们在创建View的结构是，可以用类似HTML标签的形式创建，当然最终在编译是还是会转换成JS代码。</p>
+<ul>
+<li>函数中只要返回组件，都需要用()包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const App: () &#x3D;&gt; React$Node &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  return (</span><br><span class="line">      &lt;View&gt;&lt;&#x2F;View&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li>函数中除字符串以外，赋值时都需要用{}包裹<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;SafeAreaView style&#x3D;&#123;styles.safeView&#125;&gt; &lt;&#x2F;SafeAreaView&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;Image style&#x3D;&#123;&#123;width: 168, height: 168&#125;&#125; source&#x3D;&#123;&#123;uri: &#39;http:&#x2F;&#x2F;www.itlike.com&#x2F;template&#x2F;simple&#x2F;res&#x2F;404&#x2F;img&#x2F;xiaoliao.png&#39;&#125;&#125;</span><br><span class="line">          &#x2F;&gt;</span><br></pre></td></tr></table></figure></li>
+<li>组件内使用变量时，都需要用大括号包裹，否则会被当成普通字符串处理。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const str &#x3D; &#39;引擎计划&#39;;</span><br><span class="line">&lt;Text&gt;&#123;str&#125;&lt;&#x2F;Text&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="2）样式对象文件"><a href="#2）样式对象文件" class="headerlink" title="2）样式对象文件"></a>2）样式对象文件</h6>内部以键值对的形式，取值如同JS中的对象调用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const styles &#x3D; StyleSheet.create(&#123;</span><br><span class="line">  viewStyle: &#123;</span><br><span class="line">    display: &#39;flex&#39;,</span><br><span class="line">    flex: 1,</span><br><span class="line">    justifyContent:&#39;center&#39;,</span><br><span class="line">    alignItems: &#39;center&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
